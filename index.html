@@ -46,10 +46,17 @@ footer{background:#0f172a;color:#cbd5f5;text-align:center;padding:20px}
 
   <div id="g_id_onload"
     data-client_id="831535673915-12qb40h5veil0s27tmrh8cs8lmebbpkj.apps.googleusercontent.com"
-    data-callback="onLogin">
+data-callback="handleCredentialResponse"
   </div>
 
-  <div class="g_id_signin"></div>
+  <div class="g_id_signin"
+     data-type="standard"
+     data-size="large"
+     data-theme="outline"
+     data-text="sign_in_with"
+     data-shape="rectangular"
+     data-logo_alignment="left">
+  </div>
 
   <p style="font-size:12px;opacity:.7">
     We never read emails, messages, or private data.
@@ -110,16 +117,18 @@ footer{background:#0f172a;color:#cbd5f5;text-align:center;padding:20px}
 
 </div>
 
+
+
 <script>
-function onLogin(response){
-  if(response.credential){
-    document.getElementById("loginGate").style.display="none";
-    document.getElementById("site").classList.remove("hidden");
-    document.getElementById("userInfo").innerText =
-      "You are logged in with Google (verified user)";
-  }
+function handleCredentialResponse(response) {
+  const data = JSON.parse(atob(response.credential.split('.')[1]));
+
+  document.getElementById("loginGate").style.display = "none";
+  document.getElementById("site").classList.remove("hidden");
+
+  document.getElementById("userInfo").innerText =
+    "Logged in as: " + data.name + " (" + data.email + ")";
 }
 </script>
-
 </body>
     </html>

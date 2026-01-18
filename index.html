@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aashwasan — Your Digital Assurance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aashwasan is a privacy-first platform. Login required. No data reading. No data selling.">
+
+<!-- Google Login SDK -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<style>
+body{margin:0;font-family:Arial;background:#f9fafb}
+.hidden{display:none}
+#loginGate{
+  position:fixed;inset:0;
+  background:#0f172a;color:white;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+}
+#site{padding:20px}
+.card{
+  background:white;padding:20px;
+  border-radius:8px;margin-bottom:15px
+}
+button{
+  padding:12px 20px;
+  background:#2563eb;color:white;
+  border:none;border-radius:6px;
+  cursor:pointer;font-size:15px
+}
+header{background:#0f172a;color:white;padding:15px}
+footer{background:#0f172a;color:#cbd5f5;text-align:center;padding:20px}
+</style>
+</head>
+
+<body>
+
+<!-- 🔒 LOGIN GATE -->
+<div id="loginGate">
+  <h2>Aashwasan</h2>
+  <p><b>Your Digital Assurance</b></p>
+  <p>Access is allowed only to verified users.<br>
+     Entry means responsibility.</p>
+
+  <div id="g_id_onload"
+    data-client_id="YOUR_GOOGLE_CLIENT_ID_HERE"
+    data-callback="onLogin">
+  </div>
+
+  <div class="g_id_signin"></div>
+
+  <p style="font-size:12px;opacity:.7">
+    We never read emails, messages, or private data.
+  </p>
+</div>
+
+<!-- 🔓 WEBSITE CONTENT -->
+<div id="site" class="hidden">
+
+<header>
+  <h1>Aashwasan — Your Digital Assurance</h1>
+</header>
+
+<section class="card">
+  <h3>Welcome</h3>
+  <p id="userInfo"></p>
+  <p>
+    Aashwasan is built for users who take digital privacy seriously.
+  </p>
+</section>
+
+<section class="card">
+  <h3>What We Do</h3>
+  <ul>
+    <li>Mandatory verified entry</li>
+    <li>No anonymous browsing</li>
+    <li>No message or email access</li>
+    <li>No data selling</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h3>Privacy Commitment</h3>
+  <p><b>
+    Aashwasan does NOT read, store, sell, or analyze
+    your emails, messages, chats, or social media content.
+  </b></p>
+</section>
+
+<section class="card">
+  <h3>Why Login Is Required</h3>
+  <p>
+    Privacy is not just encryption.<br>
+    Privacy starts with accountability.
+  </p>
+</section>
+
+<section class="card">
+  <h3>Future Scope</h3>
+  <p>
+    Android App • Subscription Privacy+ • Advanced Controls
+  </p>
+</section>
+
+<footer>
+  <p>© 2026 Aashwasan — Built in India 🇮🇳</p>
+</footer>
+
+</div>
+
+<script>
+function onLogin(response){
+  if(response.credential){
+    document.getElementById("loginGate").style.display="none";
+    document.getElementById("site").classList.remove("hidden");
+    document.getElementById("userInfo").innerText =
+      "You are logged in with Google (verified user)";
+  }
+}
+</script>
+
+</body>
+    </html>
